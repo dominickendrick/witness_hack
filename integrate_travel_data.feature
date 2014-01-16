@@ -15,3 +15,16 @@ Feature:
         When I moderate a contribution
         Then I should be able to add keyword tags
     
+    
+    
+
+    related witness query
+        
+    travel:
+    http://n0ticeapis.com/2/search?group=group/guardianwitness/travel
+    
+    paris:
+    http://n0ticeapis.com/2/search?location=paris
+    
+    travel+paris
+    http://n0ticeapis.com/2/search?location=paris&group=group/guardianwitness/travel

@@ -1,4 +1,4 @@
-define(function () {
+define(['jquery'], function (jQuery) {
 
     return {
     
@@ -13,9 +13,20 @@ define(function () {
     
             urlParams = {};
             while (match = search.exec(query)){
-                return urlParams[decode(match[1])] = decode(match[2]);
+                urlParams[decode(match[1])] = decode(match[2]);
             }
-    
+            return urlParams;
+        },
+        
+        queryApi: function(url, params, callback){
+            var paramString = jQuery.param(params);
+            jQuery.ajax({
+                url: url + "?" + paramString,
+                success: function (data) {
+                    // Node-style CPS: callback(err, data)
+                    callback(null, data);
+                }
+            });
         }
     
     };
