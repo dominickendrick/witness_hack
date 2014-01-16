@@ -13,11 +13,12 @@ requirejs(['jquery','src/witness'],
 function   (jQuery, witness) {
     
     var queryString = 'location=paris&group=group/guardianwitness/travel';
-    var url = 'http://n0ticeapis.com/2/search?';
+    var url = '/n0tice/2/search?';
     params = witness.getParameters(queryString);
-
+        console.log("woot");
     var callback = function(err,data){
-        jQuery('#data-display').html(data);
+        console.log("woot");
+        jQuery('#data-display').innerHtml(data);
     }
     
     witness.queryApi(url, params, callback);
