@@ -4,7 +4,13 @@ requirejs.config({
     paths: {
         lib: 'lib',
         src: 'src',
+        'handlebars': 'lib/handlebars/handlebars',
         "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min"
+    },
+    shim: {
+        'handlebars': {
+                 exports: 'Handlebars'
+        }
     }
 });
 
@@ -12,13 +18,24 @@ requirejs.config({
 requirejs(['jquery','src/witness'],
 function   (jQuery, witness) {
     
-    var queryString = 'location=paris&group=group/guardianwitness/travel';
-    var url = '/n0tice/2/search?';
+    var queryString = window.location.href.slice(window.location.href.indexOf('?') + 1);
+
+    var url = '/n0tice/2/search';
+    
     params = witness.getParameters(queryString);
-        console.log("woot");
+
     var callback = function(err,data){
-        console.log("woot");
-        jQuery('#data-display').innerHtml(data);
+                
+        var output = JSON.parse(data);
+        
+        console.log(output)
+        
+        //truncate results
+        output.results = output.results.slice(0, 4);
+        
+        renderdOutput = witness.renderOutput(output);
+        
+        jQuery('#data').html(renderdOutput);
     }
     
     witness.queryApi(url, params, callback);

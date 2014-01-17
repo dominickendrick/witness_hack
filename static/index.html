@@ -5,10 +5,31 @@
     <title> GuardianWitness </title>
 	<meta charset="utf-8" />    
     <script data-main="javascript/main.js" src="javascript/lib/require/require.js"></script>
+    <link href="stylesheets/styles.css" media="all" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-    <h1>GuardianWitness content!</h1>
+
+    <script id="entry-template" type="text/x-handlebars-template">
+        <div class="right-most-popular right-most-popular--image">
+        <h3 class="right-most-popular__title">GuardianWitness</h3>
+    
+        <ul class="right-most-popular__items u-unstyled">
+            {{#each results}}
+            <li class="right-most-popular-item" data-link-name="trail | 1">
+                <a target="_blank" class="right-most-popular-item__url media u-cf" href="{{webUrl}}">
+                <div class="right-most-popular-item__img media__img js-image-upgrade">
+                    <img width="120" height="72" class="responsive-img" src="{{updates.[0].image.extralarge}}" />
+                </div>
+                <h3 class="right-most-popular-item__headline media__body">{{headline}}</h3>
+                <a syle="font-size:0.8em" href="{{user.profileUrl}}">{{user.username}}</a>
+                
+            </li>
+            {{/each}}
+        </ul>
+
+    </script>
+
     <div id="data"></div>
 </body>
 </html>

@@ -1,4 +1,4 @@
-define(['jquery'], function (jQuery) {
+define(['jquery', 'handlebars'], function (jQuery, Handlebars) {
 
     return {
     
@@ -23,12 +23,19 @@ define(['jquery'], function (jQuery) {
             jQuery.ajax({
                 url: url + "?" + paramString,
                 success: function (data) {
-                    // Node-style CPS: callback(err, data)
                     callback(null, data);
                 }
             });
-        }
-    
+        },
+        
+        renderOutput: function(data){
+            
+            var source   = $("#entry-template").html();
+            var template = Handlebars.compile(source);
+        
+            return template(data);
+        },
+                
     };
 
     
