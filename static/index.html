@@ -12,7 +12,11 @@
 
     <script id="entry-template" type="text/x-handlebars-template">
         <div class="right-most-popular right-most-popular--image">
-        <h3 class="right-most-popular__title">GuardianWitness</h3>
+        <h3 class="right-most-popular__title"
+        style="background:url('/images/logo.gif') no-repeat top left; border:0; text-indent:-999px"
+        >GuardianWitness</h3>
+    
+        <!--<h3 class="right-most-popular__title">GuardianWitness</h3>-->
     
         <ul class="right-most-popular__items u-unstyled">
             {{#each results}}
@@ -22,8 +26,8 @@
                     <img width="120" height="72" class="responsive-img" src="{{updates.[0].image.extralarge}}" />
                 </div>
                 <h3 class="right-most-popular-item__headline media__body">{{headline}}</h3>
-                <a syle="font-size:0.8em" href="{{user.profileUrl}}">{{user.username}}</a>
-                
+                <a style="font-size:0.7em;" target="_blank" href="{{user.profileUrl}}">{{user.username}}</a>
+                </a>
             </li>
             {{/each}}
         </ul>

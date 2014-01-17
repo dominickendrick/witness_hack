@@ -5,10 +5,10 @@ require.config({
         'jasmine-html': 'lib/jasmine/jasmine-html',
          spec: 'spec',
          'sinon': 'lib/sinon/sinon',
-         "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min"
-         
-    },
-    shim: {
+         "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min",
+         'handlebars': 'lib/handlebars/handlebars'
+     },
+     shim: {
         jasmine: {
             exports: 'jasmine'
         },
@@ -18,7 +18,10 @@ require.config({
         },
 		sinon: {
 			exports: 'sinon'
-		}
+		},
+        'handlebars': {
+                 exports: 'Handlebars'
+        }
     }
 });
 
